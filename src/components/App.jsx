@@ -21,6 +21,7 @@ export function App() {
 
     setSearch(value);
     setPage(1);
+    setAllImages([]);
   };
 
   const loadMore = () => {
@@ -45,7 +46,12 @@ export function App() {
       }
     };
 
-    fetchData();
+    if (page === 1) {
+      setAllImages([]);
+      fetchData();
+    } else {
+      fetchData();
+    }
   }, [page, search]);
 
   const isAllImages = allImages.length;
